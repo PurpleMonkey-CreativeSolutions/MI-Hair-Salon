@@ -16,7 +16,29 @@ A clean, modern single-page application (SPA) built with **React**, **Vite**, an
 ## 📁 File Structure
 
 ```bash
-
+/your-project-root
+  /public
+    favicon.ico
+    ...
+  /src
+    /assets                 # images, logo, etc.
+    /components             # all React components
+      NavBar.jsx
+      Hero.jsx
+      Services.jsx
+      Restoration.jsx
+      OpeningHours.jsx      # NEW: Opening hours & socials
+      About.jsx             # NEW: About me section
+      Contact.jsx
+      Footer.jsx
+    App.jsx
+    index.css               # global styles
+    main.jsx
+  .gitignore
+  index.html
+  package.json
+  vite.config.js
+  README.md
 ```
 
 ---
