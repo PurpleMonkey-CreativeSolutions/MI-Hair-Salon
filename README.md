@@ -8,7 +8,7 @@ A clean, modern single-page application (SPA) built with **React**, **Vite**, an
 
 - ⚛️ React — UI Components
 - ⚡ Vite — Fast build tool and dev server
-- 🎨 Tailwind CSS — Utility-first CSS framework
+- 🎨 CSS3 — Traditional CSS framework
 - 🔀 Git + GitHub — Version control and collaboration
 
 ---
