@@ -1,6 +1,6 @@
 # Modern Integrity | Hairstylist Website 💇‍♀️✨
 
-A clean, modern single-page application (SPA) built with **React**, **Vite**, and ** CSS3**, designed for hairstylists or salons to showcase services, pricing, and contact information. Responsive for both desktop and mobile users.
+A clean, modern single-page application (SPA) built with **React**, **Vite**, and **CSS3**, designed for hairstylists or salons to showcase services, pricing, and contact information. Responsive for both desktop and mobile users.
 
 ---
 
@@ -8,7 +8,7 @@ A clean, modern single-page application (SPA) built with **React**, **Vite**, an
 
 - ⚛️ React — UI Components
 - ⚡ Vite — Fast build tool and dev server
-- 🎨 CSS3 — Traditional CSS framework
+- 🎨 CSS3 — Traditional CSS styling
 - 🔀 Git + GitHub — Version control and collaboration
 
 ---
@@ -27,8 +27,8 @@ A clean, modern single-page application (SPA) built with **React**, **Vite**, an
       Hero.jsx
       Services.jsx
       Restoration.jsx
-      OpeningHours.jsx      # NEW: Opening hours & socials
-      About.jsx             # NEW: About me section
+      OpeningHours.jsx      # Opening hours & socials
+      About.jsx             # About me section
       Contact.jsx
       Footer.jsx
     App.jsx
@@ -58,19 +58,13 @@ cd modernintegrity
 npm install
 ```
 
-### 3. Start Tailwind CSS build
-
-```bash
-npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch
-```
-
-### 4. Start the Vite dev server
+### 3. Start the Vite dev server
 
 ```bash
 npm run dev
 ```
 
-### 5. Open in browser
+### 4. Open in browser
 
 Visit: [http://localhost:5173](http://localhost:5173)
 
@@ -81,7 +75,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 - Mobile-first responsive layout
 - Sticky navigation bar
 - Modular and reusable React components
-- Clean utility-first styling with Tailwind
+- Traditional CSS for styling
 - No backend – content is inline for static hosting
 
 ---
@@ -91,8 +85,9 @@ Visit: [http://localhost:5173](http://localhost:5173)
 - `NavBar` — Sticky navigation
 - `Hero` — Intro with CTA
 - `Services` — What the salon offers
+- `Restoration` — Before/after and hair restoration info
+- `OpeningHours` — Business hours and social links
 - `About` — Business background or mission
-- `Pricing` — Service rates
 - `Contact` — Inline form or contact info
 - `Footer` — Copyright and social links
 
@@ -111,7 +106,6 @@ You can deploy this app easily to:
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
-
 
 ---
 

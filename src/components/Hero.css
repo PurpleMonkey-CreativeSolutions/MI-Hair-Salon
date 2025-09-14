@@ -1,0 +1,264 @@
+/* ---- Tokens (fluid) ------------------------------------------------------ */
+:root {
+  /* Keep this in sync with Navbar (sticky) height */
+  --header-h: 72px;
+
+  /* Maximum width for the site container */
+  --container-w: 1200px;
+
+  /* Horizontal breathing room for hero text on all screens */
+  --hero-side-pad: clamp(16px, 5.5vw, 120px);
+  /* Vertical safe area for hero content to clear the logo/nav */
+  --hero-top-safe: clamp(48px, 8vh, 96px);
+
+  /* Focal point for the full‑bleed background image. These
+     values adjust where the subject sits within the frame.
+     They may be overridden in media queries below. */
+  --hero-obj-x: 62%;
+  --hero-obj-y: 38%;
+
+  /* Horizontal nudges used to align the hero panel under the nav.
+     Negative values shift left, positive values shift right.  These
+     variables are customised in media queries for portrait (tall),
+     mid‑range and wide viewports. */
+  --hero-portrait-nudge-x: -22vw;  /* tall screens – moves under "About Me" */
+  --hero-mid-nudge-x: -10vw;       /* mid‑range screens – slight left shift */
+  --hero-landscape-nudge-x: 4vw;   /* wide screens (≥1200px) – shift right */
+
+  /* Typography */
+  --font-headline: "Bodoni Moda", "Bodoni 72", serif;
+  --font-body: "Montserrat", system-ui, -apple-system, Segoe UI,
+                Roboto, Arial, sans-serif;
+
+  /* Colours */
+  --c-white: #ffffff;
+  --c-muted: #cccccc;
+  --c-accent: #409caf;
+  --c-accent-contrast: #ffffff;
+}
+
+/* ---- Section ------------------------------------------------------------- */
+.hero {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* One viewport under sticky header */
+.hero-viewport {
+  position: relative;
+  height: calc(100svh - var(--header-h));
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background */
+.hero-picture,
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero-img {
+  object-fit: cover;
+  object-position: var(--hero-obj-x) var(--hero-obj-y);
+}
+
+/* Global dark overlay to improve contrast */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---- Corner logo (within hero) ------------------------------------------ */
+.hero-logo {
+  position: absolute;
+  top: clamp(12px, 1.8vh, 24px);
+  left: clamp(14px, 2vw, 32px);
+  z-index: 3;
+}
+.logo-img {
+  width: clamp(72px, 9vw, 117px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+/* ---- Content anchor ------------------------------------------------------ */
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 0 clamp(12px, 4vw, 24px);
+  padding-top: var(--hero-top-safe);
+}
+
+/* Text block */
+.hero-content {
+  width: min(92vw, 860px);
+  color: var(--c-white);
+  display: grid;
+  gap: clamp(10px, 1.8vw, 18px);
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+  transform: translateX(var(--hero-mid-nudge-x));
+}
+
+/* Typography */
+.hero-title {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  font-size: clamp(2.25rem, 6.6vw, 4.5rem);
+  margin: 0;
+}
+.title-dot {
+  display: inline-block;
+  transform: translateY(-0.1em);
+}
+.hero-tagline,
+.hero-subline {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  color: var(--c-muted);
+  margin: 0;
+  text-decoration: none;
+}
+
+/* Divider – centred using margin-inline:auto */
+.hero-separator {
+  width: clamp(100px, 12vw, 160px);
+  height: 2px;
+  background: var(--c-white);
+  opacity: 0.85;
+  border-radius: 2px;
+  margin-inline: auto;
+}
+
+/* CTA button */
+.hero-cta {
+  --btn-pad-y: clamp(10px, 1.1vw, 14px);
+  --btn-pad-x: clamp(18px, 2.2vw, 28px);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-width: clamp(160px, 24vw, 520px);
+  width: min(520px, 72vw);
+  margin-inline: auto;
+  border-radius: 999px;
+  border: none;
+  background: var(--c-accent);
+  color: var(--c-accent-contrast);
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(64, 156, 175, 0.35);
+}
+
+/* Entrance animation */
+.hero.animate-in .hero-title     { animation: fadeUp 0.8s ease-out 0.05s both; }
+.hero.animate-in .hero-tagline   { animation: fadeUp 0.8s ease-out 0.15s both; }
+.hero.animate-in .hero-subline   { animation: fadeUp 0.8s ease-out 0.20s both; }
+.hero.animate-in .hero-separator { animation: fadeUp 0.8s ease-out 0.25s both; }
+.hero.animate-in .hero-cta       { animation: fadeUp 0.8s ease-out 0.35s both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- PORTRAIT / TALL: place near chin & allow horizontal nudge ---------- */
+@media (max-aspect-ratio: 3/4) {
+  :root {
+    /* Adjust focal point to keep more of the face visible */
+    --hero-obj-x: 50%;
+    --hero-obj-y: 46%;
+  }
+
+  .hero-inner {
+    /* Move the content into the lower half (around chin level) */
+    align-content: start;
+    justify-items: center;
+    padding-top: clamp(260px, 34vh, 520px);
+  }
+
+  .hero-content {
+    width: min(92vw, 640px);
+    gap: clamp(8px, 1.4vw, 14px);
+    text-align: center;
+    /* Use portrait nudge to slide left under "About Me" */
+    transform: translateX(var(--hero-portrait-nudge-x));
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.06;
+  }
+
+  .hero-separator {
+    width: clamp(96px, 20vw, 160px);
+    margin-inline: auto;
+  }
+
+  .hero-cta {
+    width: min(420px, 82vw);
+    min-width: clamp(200px, 46vw, 420px);
+  }
+}
+
+/* ---- MID RANGE: moderate widths (768px–1199px) -------------------------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Mid screens (e.g. laptops and smaller desktops) use mid nudge */
+  .hero-content {
+    transform: translateX(var(--hero-mid-nudge-x));
+  }
+}
+
+/* ---- WIDE LANDSCAPE: shift left/right only when truly wide ------------ */
+@media (min-width: 1200px) and (min-aspect-ratio: 4/3) {
+  :root {
+    --hero-obj-x: 62%;
+    --hero-obj-y: 36%; /* Slight lift to keep forehead framed under sticky nav */
+  }
+
+  .hero-inner {
+    justify-items: start;
+    padding-left: var(--hero-side-pad);
+    padding-right: var(--hero-side-pad);
+    padding-top: clamp(72px, 6vh, 120px);
+  }
+
+  .hero-content {
+    width: clamp(420px, 38vw, 920px);
+    text-align: left;
+    /* Use landscape nudge to slide panel slightly to the right */
+    transform: translateX(var(--hero-landscape-nudge-x));
+  }
+
+  .hero-separator {
+    margin-inline: 0;
+  }
+
+  .hero-cta {
+    width: clamp(280px, 28vw, 520px);
+    min-width: clamp(220px, 20vw, 520px);
+    margin-inline: 0;
+  }
+}
+
+/* ---- Ultra‑wide: adjust focal point on very wide screens --------------- */
+@media (min-aspect-ratio: 21/9) {
+  :root {
+    --hero-obj-x: 78%;
+    --hero-obj-y: 34%;
+  }
+}
